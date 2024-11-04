@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="sendMessage()">Send</button>
+  </body>
+
+  <script>
+    let characters = ['a','b','c','d','e','f','g','j','i','h','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','Q','Y','Z','2','3','4','5','6','7','8','9'];
+
+    let randomCharacter = "";
+
+    function generateCode() {
+        randomCharacter = "";
+      for (let x = 0; x < 8; x++) {
+        randomCharacter = randomCharacter + characters.at(Math.random() * characters.length);
+      }
+      
+      console.log(randomCharacter);
+    }
+    function sendMessage() {
+      const request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/1302761933165957121/Z4moNp8IuXrZy038w-aV1jbP7EQ6QWXDLCzXmmFmHCct3rOt9xjKG7NbLhSCwScCO_X9");
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+      generateCode();
+
+      const params = {
+        avatar_url: "",
+        content: "https://discord.gg/" + randomCharacter,
+      }
+
+      request.send(JSON.stringify(params));
+    }
+  </script>
+</html>
