@@ -6,7 +6,7 @@
     <title>Document</title>
   </head>
   <body>
-    <button onclick="sendMessage()">Send</button>
+    <button onclick="repeatFunc()">Send</button>
   </body>
 
   <script>
@@ -36,6 +36,12 @@
       }
 
       request.send(JSON.stringify(params));
+    }
+
+    function repeatFunc() {
+        for(let x = 0; x < 2; x++) {
+            sendMessage();
+        }
     }
   </script>
 </html>
